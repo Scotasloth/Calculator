@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"     // For input and output
-	"log"     // For logging errors
-	"strconv" // For converting string inputs to numbers
+	"fmt" // For input and output
+	"log" // For logging errors
+	// For converting string inputs to numbers
 )
 
 func main() {
@@ -27,6 +27,26 @@ func main() {
 		log.Fatal(err)
 	}
 
-	strconv.AppendQuoteRuneToASCII() //here so it doesnt remove my import when saving
+	fmt.Print("Select operator: + - * /: ")
+	fmt.Scan(&operation)
 
+	var result float64
+	switch operation {
+	case "+":
+		result = num1 + num2
+	case "-":
+		result = num1 - num2
+	case "*":
+		result = num1 * num2
+	case "/":
+		if num2 != 0 {
+			result = num1 / num2
+		} else {
+			log.Fatal("Error division by 0")
+		}
+	default:
+		log.Fatal("Invalid Operation")
+	}
+
+	fmt.Printf("Result: %v\n", result)
 }
